@@ -2,6 +2,7 @@ const STORAGE_KEY = 'tasks';
 const form = document.getElementById('add-form');
 const input = document.getElementById('new-task');
 const list = document.getElementById('task-list');
+const counter = document.getElementById('counter');
 
 let tasks = load();
 
@@ -48,6 +49,9 @@ function render() {
     li.append(checkbox, text, del);
     list.append(li);
   }
+
+  const remaining = tasks.filter(t => !t.done).length;
+  counter.textContent = `${remaining} ${remaining === 1 ? 'task' : 'tasks'} left`;
 }
 
 form.addEventListener('submit', e => {

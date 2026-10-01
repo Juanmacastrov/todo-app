@@ -3,6 +3,7 @@ const form = document.getElementById('add-form');
 const input = document.getElementById('new-task');
 const list = document.getElementById('task-list');
 const pendingCounter = document.getElementById('pending-counter');
+const clearAllButton = document.getElementById('clear-all');
 
 let tasks = load();
 
@@ -34,6 +35,7 @@ function updatePendingCounter() {
 
 function render() {
   list.innerHTML = '';
+  clearAllButton.disabled = tasks.length === 0;
   for (const task of tasks) {
     const li = document.createElement('li');
     if (task.done) li.classList.add('done');
@@ -75,6 +77,12 @@ form.addEventListener('submit', e => {
   save();
   render();
   input.value = '';
+});
+
+clearAllButton.addEventListener('click', () => {
+  tasks = [];
+  save();
+  render();
 });
 
 render();

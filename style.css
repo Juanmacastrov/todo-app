@@ -39,6 +39,22 @@ button {
   padding: 0.5rem 1rem;
 }
 
+.clear-all {
+  display: block;
+  margin: 0.75rem 0 0 auto;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #dc2626;
+  border-radius: 4px;
+  background: #fff;
+  color: #dc2626;
+}
+
+.clear-all:disabled {
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
 #task-list {
   list-style: none;
   padding: 0;

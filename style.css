@@ -61,6 +61,12 @@ button {
   color: #9ca3af;
 }
 
+#counter {
+  margin: 1rem 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
 .delete {
   border: none;
   background: none;

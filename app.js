@@ -4,8 +4,10 @@ const input = document.getElementById('new-task');
 const list = document.getElementById('task-list');
 const pendingCounter = document.getElementById('pending-counter');
 const clearAllButton = document.getElementById('clear-all');
+const filterButtons = document.querySelectorAll('[data-filter]');
 
 let tasks = load();
+let activeFilter = 'all';
 
 function getPendingCount(taskList = []) {
   if (!Array.isArray(taskList)) return 0;
@@ -36,7 +38,11 @@ function updatePendingCounter() {
 function render() {
   list.innerHTML = '';
   clearAllButton.disabled = tasks.length === 0;
-  for (const task of tasks) {
+  for (const button of filterButtons) {
+    button.setAttribute('aria-pressed', button.dataset.filter === activeFilter);
+  }
+
+  for (const task of getFilteredTasks(tasks, activeFilter)) {
     const li = document.createElement('li');
     if (task.done) li.classList.add('done');
 
@@ -67,6 +73,13 @@ function render() {
   }
 
   updatePendingCounter();
+}
+
+for (const button of filterButtons) {
+  button.addEventListener('click', () => {
+    activeFilter = button.dataset.filter;
+    render();
+  });
 }
 
 form.addEventListener('submit', e => {

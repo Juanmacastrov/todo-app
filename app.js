@@ -6,6 +6,11 @@ const pendingCounter = document.getElementById('pending-counter');
 
 let tasks = load();
 
+function getPendingCount(taskList = []) {
+  if (!Array.isArray(taskList)) return 0;
+  return taskList.filter(task => !task.done).length;
+}
+
 function load() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];

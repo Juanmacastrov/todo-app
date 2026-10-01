@@ -55,6 +55,26 @@ button {
   cursor: not-allowed;
 }
 
+.filters {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.filters button {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  color: #374151;
+}
+
+.filters button[aria-pressed="true"] {
+  border-color: #166534;
+  background: #166534;
+  color: #fff;
+}
+
 #task-list {
   list-style: none;
   padding: 0;

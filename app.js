@@ -2,6 +2,7 @@ const STORAGE_KEY = 'tasks';
 const form = document.getElementById('add-form');
 const input = document.getElementById('new-task');
 const list = document.getElementById('task-list');
+const pendingCounter = document.getElementById('pending-counter');
 
 let tasks = load();
 
@@ -15,6 +16,15 @@ function load() {
 
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+}
+
+function updatePendingCounter() {
+  if (!pendingCounter) return;
+
+  const pending = getPendingCount(tasks);
+  const label = pending === 1 ? 'pendiente' : 'pendientes';
+  pendingCounter.textContent = `${pending} ${label}`;
+  pendingCounter.classList.toggle('zero', pending === 0);
 }
 
 function render() {
@@ -48,6 +58,8 @@ function render() {
     li.append(checkbox, text, del);
     list.append(li);
   }
+
+  updatePendingCounter();
 }
 
 form.addEventListener('submit', e => {

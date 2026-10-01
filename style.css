@@ -3,6 +3,8 @@ body {
   background: #f3f4f6;
   margin: 0;
   padding: 2rem 1rem;
+  min-height: 100vh;
+  position: relative;
 }
 
 main {
@@ -66,4 +68,23 @@ button {
   background: none;
   color: #dc2626;
   font-size: 1.1rem;
+}
+
+.pending-counter {
+  margin-top: 1rem;
+  margin-left: auto;
+  width: fit-content;
+  background: #111827;
+  color: #fff;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.2);
+}
+
+.pending-counter.zero {
+  background: #e5e7eb;
+  color: #111827;
 }
